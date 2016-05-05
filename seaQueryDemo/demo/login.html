@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no/">
+    <title>QuerySeaFreight</title>
+    <link href="../icon.css" rel="stylesheet">
+    <link href="semantic.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/semantic-ui/2.1.8/components/form.css" rel="stylesheet">
+    <style>
+        #logo{
+            text-align:center;margin-top:4rem;
+        }
+        .f_input{
+            border:1px solid #ccc !important;
+            border-left:5px solid #ccc !important;
+            border-radius:0 !important;
+        }
+        .mgtop_0_3{
+            margin-top: 0.3rem;
+        }
+        .mgtop_1{
+            margin-top: 1rem;
+        }
+        .mgtop_1_5{
+            margin-top:1.5rem;
+        }
+        .mgtop_3_5{
+            margin-top: 3.5rem;
+        }
+        .mgtop_5{
+            margin-top: 5rem;
+        }
+        
+        .mg_2_auto{
+            margin: 2rem auto !important;
+        }
+        .ta_center{
+           text-align: center; 
+        }
+        .wd_85{
+            width: 85%;
+        } 
+        
+        .reset_segment{
+            border:none !important;box-shadow:none !important;
+        }
+        .text_teal{
+            color: teal;
+        } 
+     
+    </style>
+</head>
+<body>
+     <div id="logo" data-state="1">
+        <a href=""><img src="http://1.globelinkct.sinaapp.com/img/logo.png" alt="环发讯通"></a> 
+        <div class="mgtop_1_5 ta_center"><strong>专注互联网货运</strong></div>
+     </div>
+     <form action="http:www.baidu.com" method="POST">
+        <div class="mgtop_5 ta_center">
+            <div class="ui left icon input wd_85">
+                <input placeholder="请输入用户名" type="text">
+                <i class="user icon"></i>
+            </div>  
+        </div>
+        <div class="mgtop_0_3 ta_center">
+            <div class="ui left icon input wd_85">
+                <input placeholder="请输入密码" type="password">
+                <i class=" lock icon"></i>
+            </div>  
+        </div>
+        <div class="ta_center mgtop_1">
+                <div class="ui teal button wd_85" id="login">登&nbsp;录</div>
+        </div>
+     </form>
+     <div class="mgtop_3_5">
+        <div class="ui center aligned segment clearfix reset_segment">
+            <div class="text_teal">立即注册,成为会员</div>
+            <div class="ui horizontal divider mg_2_auto wd_85"> or</div>
+            <div class="ui">随便逛逛&nbsp></div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/semantic-ui/2.1.8/semantic.min.js"></script> 
+    <script>
+        $(document).ready(function(){
+          $("input").blur(function(){
+               $(this).removeClass("f_input");
+                var fadeIn = setTimeout(function(){
+                    clearTimeout(fadeIn);
+                    if($("input").is(":focus"))
+                      return false;
+                    else
+                     $("#logo").fadeIn(500); 
+                },800);
+                fadeIn();
+          });
+          $("input").focus(function(){              
+              $("#logo").fadeOut(500);    
+              $(this).addClass("f_input");   
+          });
+          $("#login").on('click',function(){
+              $("form").submit();
+          });  
+       });       
+   </script>
+</body>
+</html>

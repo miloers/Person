@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <link rel="stylesheet" href="my.css">
+     <link href="semantic.css" rel="stylesheet">
+     <link href="icon.css" rel="stylesheet">
+     <style>
+        .goLogin{
+            color:black !important;
+            text-decoration: underline;
+            transition: 0.5s ease-out;
+            -webkit-transition:0.5s ease-out;
+            -moz-transition:0.5s ease-out;            
+        }
+        .goLogin:hover{
+            color: teal !important;
+            text-decoration: underline;
+        }      
+     </style>
+</head>
+<body>
+    <div id="logo">
+      <a href="http://www.globelinkcn.com"> 
+         <img src="http://webapp.globelinkcn.com/Templates/default/images/logo.jpg" alt="" width="230" height="40">
+      </a>
+  </div>
+ <div id="box">
+        <div class="ui  form segment content_box" >
+            <a class="ui ribbon teal label" style="font-size:14px;">注册</a>
+            <div class="field" style="margin-top:1rem;">
+                <label>用户名</label>
+                <div  class="ui left icon input">
+                    <input  type="text" onblur="checkuser()">
+                    <i class=" user icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label>密码</label>
+                <div  class="ui left icon input">
+                    <input type="password">
+                    <i class=" lock icon"></i>
+                </div>  
+            </div>
+             <div class="field">
+                <label>重复密码</label>
+                <div  class="ui left icon input">
+                    <input type="password">
+                    <i class="lock icon"></i>
+                </div>  
+            </div>
+             <div class="field">
+                <label>邮箱</label>
+                <div  class="ui left icon input">
+                    <input type="email">
+                    <i class="mail icon"></i>
+                </div>  
+            </div>
+            <div class="ui column stackable center aligned grid " style="margin:0.2rem 0">                
+                     <input class="teal ui button" value="注册" type="submit" style="width:220px;">
+                     <div class="ui horizontal divider">or</div>   
+                     <div class="goLogin">
+                       <div  class="ui rigth icon input">
+                            <a href="" class="goLogin" >已有账号，直接登录</a>
+                       </div>  
+                       <i class="long arrow right icon" style="margin-left:-2px;"></i>
+                    </div>
+            </div>  
+        </div>        
+</div>        
+       <div class="footer">
+           <p class="copyright">Copyright &copy; 2015-2016  All Rights Reserved 环发讯通有限公司版权所有 津ICP备15001440号-1</p>
+       </div>  
+      
+        
+  <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="semantic.min.js"></script>
+   <script>
+           $(document).ready(function(){
+               $("#goLogin").hover(function(){
+                   $("#goLogin").addClass("gologin");
+               });
+           });
+       </script>
+</body>
+</html>

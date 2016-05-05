@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <link rel="stylesheet" href="my.css">
+     <link href="semantic.css" rel="stylesheet">
+     <link href="icon.css" rel="stylesheet">
+     <style>
+         body{
+             font-family: "microsoft yahei","宋体",sans-serif !important; 
+         }
+         .qy_font{
+             font-family: 'microsoft yahei' !important;
+         }
+         .qy_cursor{
+             cursor: pointer;
+         }
+     </style>
+</head>
+<body>
+    <div id="logo">
+      <a href="http://www.globelinkcn.com"> 
+         <img src="http://webapp.globelinkcn.com/Templates/default/images/logo.jpg" alt="" width="230" height="40">
+      </a>
+    </div> 
+    <div  class="qy_nav ui three column grid" style="width:80%;margin:0 auto -0.5rem;">
+        <div class="ui breadcrumb column" style="margin-top:13px;">
+            <a class="section" style="color:teal;" >运价更新</a>
+            <div class="divider"> / </div>
+            <div class="section" style="color:teal;">维护</div>
+            <div class="divider"> / </div>
+            <div class="active section">[那个港口]</div>
+        </div>
+    </div>
+    <hr style="width:80%;color:teal;opacity:0.7;"> 
+    <div style="width:75%;margin:0.5rem auto;">
+        <div class="ui label large qy_cursor">
+            <i class="circle icon"></i>
+            起运港
+            <div class="detail">XINGANG</div>
+        </div>
+        <div class="ui label large qy_cursor">
+            <i class="circle icon"></i>
+            港口
+            <div class="detail">BOrton</div>
+        </div>
+        <div class="ui label large qy_cursor">
+            <i class="circle icon"></i>
+            中转点
+            <div class="detail">Corton</div>
+        </div>
+        <div class="ui left action input" style="height:2.3rem;">  
+            <div class="ui action input">            
+                <div class="ui button">航程</div>
+            </div>
+              <input value="40天" type="text" style="padding:5px;width:55px;" >
+        </div>         
+        <div class="ui left action input"  style="height:2.3rem;">
+            <div class="ui labeled icon button" id="qy_model">
+                <i class="search icon"></i>
+                船期选择
+            </div>
+            <input  type="text" id="sail_date_value" style="padding:5px;">
+        </div>        
+    </div>
+    <table class="ui celled  table " style="width:75%;margin:1rem auto;">
+        <thead>
+            <tr>
+                <th >费用名称</th>
+                <th >轻货价格</th>
+                <th >重货价格</th>
+                <th >币种</th>
+                <th >费用类型</th>
+                <th >是否海运费</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+                <td> 
+                    <div class="ui input">
+                        <input type="text" value="AGENCYAGENCYAGENCY" style="padding:5px;width:150px;" class="lightPrice">
+                    </div>
+              </td>
+                <td>
+                    <div class="ui input">
+                        <input type="text" value="AGENCY" style="padding:5px;width:150px;" class="lightPrice">
+                    </div>    
+                </td>
+                <td>
+                     <div class="ui input">
+                        <input type="text" value="AGENCY" style="padding:5px;width:150px;" class="lightPrice">
+                    </div>   
+                </td>
+                <td>  
+                    <select class="ui dropdown">
+                        <option value="">选择币种</option>
+                        <option value="周一">周一</option>
+                        <option value="周二">周二</option>
+                        <option value="周三">周三</option>
+                        <option value="周四">周四</option>
+                        <option value="周五">周五</option>
+                        <option value="周六">周六</option>
+                        <option value="周日">周日</option>
+                    </select>
+                </td>
+                <td>
+                 <select class="ui dropdown">
+                    <option value="">选择费用类型</option>
+                    <option value="周一">周一</option>
+                    <option value="周二">周二</option>
+                    <option value="周三">周三</option>
+                    <option value="周四">周四</option>
+                    <option value="周五">周五</option>
+                    <option value="周六">周六</option>
+                    <option value="周日">周日</option>
+                </select>
+                </td>
+                <td>
+                  <div class="ui checkbox" style="margin-left:1.7rem;">
+                    <input type="checkbox">
+                    <label></label>
+                  </div>
+                </td>
+           </tr>       
+        </tbody>
+</table>
+    
+    <div style="width:40%; margin:0 atuto; float:right;">
+        <div class="ui button">
+            <i class="refresh icon"></i>
+            重置
+        </div>
+         <div class="ui button">
+            <i class="send icon"></i>
+            提交
+        </div>
+    </div>
+    <div class="footer" style="margin-top:5rem;clear:both;margin-bottom:1rem">
+        <p class="copyright">Copyright &copy; 2015-2016  All Rights Reserved 环发讯通有限公司版权所有 津ICP备15001440号-1</p>
+    </div>
+    <div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    船期选择
+  </div>
+  <div class="content">
+    <select class="ui dropdown" id="sail_date">
+        <option value="">船期</option>
+        <option value="周一">周一</option>
+        <option value="周二">周二</option>
+        <option value="周三">周三</option>
+        <option value="周四">周四</option>
+        <option value="周五">周五</option>
+        <option value="周六">周六</option>
+        <option value="周日">周日</option>
+    </select>
+    <select class="ui dropdown" id="sail_company">
+        <option value="">船公司</option>
+        <option value="XiMA">XiMA</option>
+        <option value="South">South</option>
+        <option value="North">North</option>
+        <option value="xix">Xixe</option>
+        <option value="Mingyang">Mingyang</option>
+        <option value="Yangming">Yangming</option>
+        <option value="Wanhaida">Wanhada</option>
+    </select>
+    <div class="ui teal button" id="qy_addsail">
+      添加
+    </div>
+    <div class="description" style="padding-top:10px;">
+      <div class="ui header" >选择的船期为:</div>
+	       <p id="query_sail"></p>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <div class="ui black right labeled icon button" id="undoSaildate" >
+      重置
+      <i class="undo icon"></i>
+    </div>
+    <div class="ui positive right labeled icon button" id="submitSaildate">
+      提交
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>          
+  <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="semantic.min.js"></script> 
+  <script>
+      $(document).ready(function(){
+         $('.ui.dropdown').dropdown();
+         $("#qy_model").click(function(){
+             $('.ui.modal').modal('show');
+          }); 
+           $("#qy_addsail").click(function(){
+             var sail_date=$("#sail_date option:selected").val();
+             var sail_company=$("#sail_company option:selected").val();
+             if(!(sail_date&&sail_company))
+             {
+                 alert("sailing date is not null !");
+                 return false;
+             }
+             else
+             {
+                $("#query_sail").append("<p>"+[sail_date]+","+[sail_company]+",</p>");
+             }
+          });
+          $("#submitSaildate").click(function(){
+              var query_sail = $("#query_sail").text();
+              alert(query_sail);
+              $("#sail_date_value").val(query_sail);
+          });
+          $("#undoSaildate").click(function(){
+              $("#query_sail").text(" ");
+          });      
+      });
+  </script>
+</body>
+</html>
+
+
