@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <title>webSliderDemo_150308</title>
+    <style>
+        body{
+            background-color:rgba(235, 159, 159, 0.81);
+        }
+        .outer{
+            margin:50px 50px;
+           width:350px;height:500px;
+           
+           background:black;
+        }
+        .click{
+            width:40px;height:40px;
+            margin:15px; text-align:center;line-height:35px;-webkit-transition:all ease-in 0.5s;-o-transition:all ease-in 0.5s;transition:all ease-in 0.5s;float:left;color:white;
+        }
+        .time{
+         -webkit-transition:all ease-in 0.5s;-o-transition:all ease-in 0.5s;transition:all ease-in 0.5s;
+        }
+        .click:hover{
+            color:teal;
+        }
+        .qy_hide{
+          
+            width:70%;
+            height:90%;float:left;background-color:white;
+        }
+        .qy_nav1{
+            width:110px;height:110px;border-radius:50%;background-image:url(http://www.qjis.com/uploads/allimg/120812/11012a4J-27.jpg);background-size:100% 100%;text-align:center;
+           margin-top:30px;margin-left:70px;border:6px solid rgba(220, 211, 211, 0.47);
+        }
+        .p1{text-align:center;font-family:'Microsoft JhengHei';font-weight:600;cursor:pointer;}
+        .p1:hover{
+            color:teal;
+        }
+        .toleft{
+            margin-left:15px;float:left;
+        }
+        .p2{
+           font-family:'Microsoft JhengHei';font-size:14px;margin-left:60px;line-height:28px;width:160px;border-top:1px solid #ccc;padding-left:10px;
+        }
+        .index{margin-top:20px;cursor:pointer;}
+        .index:hover{color:teal;}
+               
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#click1").click(function () {
+                $("#qy_hide1").toggle("fade");
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="outer">
+        <div class="qy_hide" id="qy_hide1">
+                <div class="qy_nav1">
+                </div>
+              <p class="p1 time">Miloer   TianJin</p>
+              <div class="index">
+               <i class="material-icons small waves-effect waves-light toleft">grade</i> <p class="p2">Home</p>
+              </div>  
+            <div class="index">
+                <i class="material-icons small waves-effect waves-light toleft">voicemail</i> <p class="p2">Voicemail</p>
+            </div>  
+            <div class="index">
+                <i class="material-icons small waves-effect waves-light toleft">payment</i> <p class="p2">payment</p>
+            </div> 
+            <div class="index">
+                <i class="material-icons small waves-effect waves-light toleft">settings</i> <p class="p2">Settings</p>
+            </div>  
+        </div>
+        <div class="click" id="click1">
+         <i class="material-icons small waves-effect waves-light">toc</i>
+        </div>
+     </div>
+</body>
+</html>
