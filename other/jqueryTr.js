@@ -68,14 +68,50 @@
                 this[i].className = this[i].className.replace(cls,'');
            }
            return this;
+       },
+       next:function () {
+           return sibling(this[0],"nextSibling");
+       },
+       prev:function () {
+           return sibling(this[0],"previousSibling");
+       },
+       parent:function(){
+           var parent = this[0].parentNode;
+           parent && parent.nodeType !== 11 ? parent :null;
+           var a = Mou();
+                   a[0]=parent;
+                   a.selector = parent.tagName.toLocaleLowerCase();
+                   a.length =1;
+           return a;
+       },
+       parents:function(){
+           var a = Kodo(),
+               i = 0;
+           while ( (this[0] = this[0]['parentNode']) && this[0].nodeType !==9){
+               if ( this[0].nodeType === 1){
+                   a[i] = this[0];
+                   i++;
+               }
+           }
+           a.length = i ;
+           return a;
        }
+       
+       
     };
   
     Mou.prototype.init.prototype = Mou.prototype;
     
     Mou.ajax = function () {
         console.log(this);
+    };
+    
+    function sibling(cur,dir) {
+        while ((cur=cur[dir]) && cur.nodeType !==1){};
+        return cur;
     }
+    
+    
     window.f = Mou;
 })(window,document);
 ;
