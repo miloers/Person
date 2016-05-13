@@ -14,6 +14,20 @@
             if(!selector){
                 return this;
             }  
+            
+            if(typeof selector  =="object"){
+                var selector = [selector];
+                for(var i= 0;i<selector.length;i++){
+                    this[i]= selector[i];
+                }
+                this.length = selector.length;
+                return this;
+            }else if(typeof selector =="function"){
+                Mou.ready(selector);
+                return;
+            }
+            
+            
             var selector = selector.trim(),
                 elm;
             if(selector.charAt(0)=='#'&& !selector.match('\\s')){
@@ -106,12 +120,41 @@
         console.log(this);
     };
     
+    Mou.ready = function(fn){
+        doc.addEventListener('DOMContentLoaded',function(){
+            fn && fn();
+        },false);
+        doc.removeEventListener('DOMContentLoaded',fn,true);
+    };
+    
+    Mou.each = function(obj,callback){
+        var len = obj.length,
+            constru =obj.constructor,
+            i=0;
+        if(constru===w.f){
+            for(;i<len;i++){
+                var val =callback.call(obj[i],i,obj[i]);
+                if(val===false)
+                break;
+            }
+        }else if(isArray(obj)){
+            for(;i<len;i++){
+                var val =callback.call(obj[i],i,obj[i]);
+                if(val===false) break;
+            }
+        }else{
+            for(i in obj){
+                var val =callback.call(obj[i],i,obj[i]);
+                if(val===false) break;
+            }
+        }
+    };
+    
+    
     function sibling(cur,dir) {
         while ((cur=cur[dir]) && cur.nodeType !==1){};
         return cur;
     }
-    
-    
     window.f = Mou;
 })(window,document);
 ;
