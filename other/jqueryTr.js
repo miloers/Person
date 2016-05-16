@@ -86,6 +86,23 @@
        next:function () {
            return sibling(this[0],"nextSibling");
        },
+       find:function(selector){
+           if(!selector) return;
+           var context = this.selector;
+           return new Mou(context+''+selector);
+       },
+       first:function(){
+           return new Mou(this[0]);
+       },
+       last:function(){
+           var num = this.length-1;
+           return new Mou(this[num]);
+       },
+       eq:function(num){
+           var num = num < 0 ? (this.length -1):num;
+           console,log(num);
+           return this[num];
+       },
        prev:function () {
            return sibling(this[0],"previousSibling");
        },
@@ -99,7 +116,7 @@
            return a;
        },
        parents:function(){
-           var a = Kodo(),
+           var a = Mou(),
                i = 0;
            while ( (this[0] = this[0]['parentNode']) && this[0].nodeType !==9){
                if ( this[0].nodeType === 1){
@@ -149,6 +166,28 @@
             }
         }
     };
+    
+    Mou.get = function(url,sucBack,complete){
+        var options = {
+            url:url,
+            success : sucBack,
+            complete:complete
+        };
+        ajax(options);
+    };
+    
+    Mou.post = function(url,data,sucBack,complete){
+        var options = {
+            url: url,
+            type:"POST",
+            data:data,
+            sucBack :sucBack,
+            complete:complete
+        };
+        ajax(options);
+    };
+
+    
     
     
     function sibling(cur,dir) {
