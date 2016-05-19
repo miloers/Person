@@ -14,7 +14,6 @@
             if(!selector){
                 return this;
             }  
-            
             if(typeof selector  =="object"){
                 var selector = [selector];
                 for(var i= 0;i<selector.length;i++){
@@ -47,24 +46,31 @@
                 return this;
             }
         },
-        css:function (attr,val) {
-            console.log(this.length);
-            for(var i=0;i<this.length;i++){
-                if(arguments.length==1){
-                    return getComputedStyle(this[i],null)[attr];
-                }
-                this[i].style[attr] =val;
-            }
-            return this;
-        },
-      hasClass:function(cls){
-          var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-          for(var i = 0 ;i< this.length ;i++){
-              if(this[i].className.match(reg))
-                return true;
-                return false;
+      css:function(attr,val){
+          for(var i=0;i<this.length;i++){
+              if(typeof attr == 'string'){
+                  if(arguments.length == 1){
+                      return getComputedStyle(this[0],null)[attr];
+                  }
+                  this[i].style[attr] = val;
+              }else{
+                  var _this =this[i];
+                  f.each(attr,function(attr,val){
+                      _this.style.cssText +=''+attr+':'+val+';';
+                  });
+              }
           }
-          return this;
+           return this;
+      },
+      hasClass:function(cls){
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)' );
+        var arr =[];
+        for(var i=0;i<this.length;i++){
+            if(this[i].className.match(reg)){
+                return true;
+            }
+        }
+        return false;  
       },
       
       addClass :function(cls){
@@ -126,6 +132,38 @@
            }
            a.length = i ;
            return a;
+       },
+       attr:function(attr,val){
+           for(var i=0;i<this.length;i++){
+               if(typeof attr == "string"){
+                   if( arguments.length == 1){
+                       return this[i].getAttribute(attr);
+                   }
+                   this[i].setAttribute(attr,val);
+               }else{
+                   var _this = this[i];
+                   f.each(attr,function(attr,val){
+                       _this.setAttribute(attr,val);
+                   });
+               }
+           }
+           return this;
+       },
+       data: function(attr,val){
+           for(var i=0;i<this.length;i++){
+               if(typeof attr =="string"){
+                   if(arguments.length == 1){
+                       return this[i].getAttribute('data-'+attr);
+                   }
+                   this[i].setAttribute('data-'+attr,val);
+               }else{
+                   var _this =this[i];
+                   f.each(attr,function (attr,val) {
+                       _this.setAttribute('data-'+attr,val);
+                   });
+               }
+           }
+           return this;
        }
        
        
@@ -187,8 +225,54 @@
         ajax(options);
     };
 
+    function ajax(options){
+        var defaultOptions ={
+            url:false,
+            type:"GET",
+            data:false,
+            success:false,
+            complete:false
+        };
+        for(i in defaultOptions){
+            if(options[i]===undefined){
+                options[i] = defaultOptions[i];
+            }
+        }
+        var xhr = new XMLHttpRequest();
+        var url =options.url;
+        xhr.open(options.type,url);
+        xhr.onreadystatechange = onStateChange;
+        if(options.type ==="POST"){
+            xhr.setRequestHeader('Content-Type','applications/x-www-form-urlencoded');
+        }
+        xhr.send(options.data?options.data:null);
+    }
     
-    
+    function onStateChange(){
+        if(xhr.readyState == 4){
+            var  result,
+                 status = xhr.status;
+            if((status>=200&&status<300)||status ==304){
+                result =xhr.responseText;
+                if(window.JSON){
+                    result =JSON.parse(result);
+                }else{
+                    result = eval('('+result+')');
+                }
+                ajaxSuccess(result,xhr)
+            }else{
+                console.log("ERR",xhr.status);
+            }
+        }
+    }
+    function ajaxSuccess(data,xhr){
+        var status ='success';
+        options.success &&  options.success(data,options,status,xhr)
+        ajaxComplete(status)
+    }
+    function ajaxComplete(status){
+        options.complete && options.complete(status);
+    }
     
     function sibling(cur,dir) {
         while ((cur=cur[dir]) && cur.nodeType !==1){};
