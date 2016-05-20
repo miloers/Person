@@ -164,6 +164,49 @@
                }
            }
            return this;
+       },
+       html:function(value){
+           if(value === undefined && this[0].nodeType === 1){
+               return this[0].innerHTML;
+           }else{
+               for(var i=0;i<this.length;i++){
+                   this[i].innerHTML = value;
+               }
+           }
+           return this;
+       },
+       text:function(val){
+           if(val === undefined && this[0].nodeType ===1){
+               return this[0].innerHTML;
+           }else{
+               for(var i=0;i<this.length;i++){
+                   this[i].innerHTML =val;
+               }
+           }
+       },
+       append:function(str){
+           for(var i=0;i<this.length;i++){
+               domAppend(this[i],'beforeend',str);
+           }
+           return this;
+       },
+       before:function(str){
+           for(var i=0;i<this.length;i++){
+               domAppend(this[i],'beforeBegin',str);
+           }
+           return this;
+       },
+       after:function(str){
+           for(var i=0;i<this.length;i++){
+               domAppend(this[i],'afterEnd',str);
+           }
+           return this;
+       },
+       remove:function(){
+           for(var i=0;i<this.length;i++){
+               this[i].parentNode.removeChild(this[i]);
+           }
+           return this;
        }
        
        
@@ -278,6 +321,11 @@
         while ((cur=cur[dir]) && cur.nodeType !==1){};
         return cur;
     }
+    
+    function domAppend(elm,type,str){
+        elm.insertAdjacentHTML(type,str);
+    }
+    
     window.f = Mou;
 })(window,document);
 ;
