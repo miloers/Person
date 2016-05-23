@@ -326,6 +326,32 @@
         elm.insertAdjacentHTML(type,str);
     }
     
+    function delegate(agent,type,selector,fn){
+        agent.addEventListener(type,function(e){
+             
+             var target = e.target;
+             var ctarget =e.currentTarget;
+             var bubble = true;
+             
+             while(bubble && target != ctarget){
+                 if(filiter(agent,selector,target)){
+                     bubble = fn.call(target,e);
+                     return bubble;
+                 }
+                 target =target.parentNode;
+             }
+        },false);
+        function filiter(agent,selector,target){
+            var nodes =agent.querySelectorAll(selector);
+            for(var i=0; i<nodes.length;i++){
+                if(nodes[i] == target){
+                    return true;
+                }
+            }
+        }
+    }
+    
+    
     window.f = Mou;
 })(window,document);
 ;
