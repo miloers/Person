@@ -207,7 +207,44 @@
                this[i].parentNode.removeChild(this[i]);
            }
            return this;
+       },
+       on:function(type,selector,fn){
+           if(typeof selector == 'function'){
+               fn = selector;
+               for(var i=0;i<this.length;i++){
+                   if(!this[i].guid){
+                       this[i].guid = ++Mou.guid;
+                       Mou.Events[Mou.guid] = {};
+                       Mou.Events[Mou.guid][type] = [fn];
+                       bind(this[i],type,this[i].guid);
+                   }else{
+                       var id =this[i].guid;
+                       if(Mou.Events[id][type]){
+                           Mou.Events[id][type].push(fn);
+                       }else{
+                           Mou.Events[id][type] =[fn];
+                           bind(this[i],type,id);
+                       }
+                   }
+               }
+           }
+       },
+       off:function(type,selector){
+           if(arguments.length == 0){
+               for(var i=0;i<this.length;i++){
+                   var id = this[i].guid;
+                   for(var j in Mou.Events[id]){
+                       delete Mou.Events[id][j];
+                   }
+               }
+           }else if(arguments.length ==1){
+               for(var i=0;i<this.length;i++){
+                   var id =this[i].guid;
+                   delete Mou.Events[id][type];
+               }
+           }
        }
+      
        
        
     };
@@ -217,7 +254,8 @@
     Mou.ajax = function () {
         console.log(this);
     };
-    
+    Mou.Events = [];
+    Mou.guid=0;
     Mou.ready = function(fn){
         doc.addEventListener('DOMContentLoaded',function(){
             fn && fn();
@@ -267,6 +305,14 @@
         };
         ajax(options);
     };
+     
+       function bind(dom,type,guid){
+           dom.addEventListener(type,function(e){
+               for(var i=0;i<Mou.Events[guid][type].length;i++){
+                   Mou.Events[guid][type][i].call(dom,e);
+               }
+           },false);
+       }
 
     function ajax(options){
         var defaultOptions ={
