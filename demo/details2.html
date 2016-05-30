@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+<link rel="stylesheet" href="../style/weui.min.css">
+<link rel="stylesheet" href="../style/reset.css">
+<link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+<link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+<script type="text/javascript" src="http://g.alicdn.com/sj/lib/zepto/zepto.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js" charset="utf-8"></script>
+<script>
+  $(function(){
+      $("article").find('section').eq(0).find(".point-time").addClass("point-green").removeClass("point-grey"); 
+      $("article").find('section').eq(0).find(".things").css('color','green').siblings('.brief').css('color','green');
+  });
+</script>
+<title>CargoDetails</title>
+<style>
+article,section,time,aside{display:block;}
+body {
+  color: #9f9f9f;
+  background: #fff;
+  font-size: 1.16em;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+.qy_conent{
+    width: 100%;margin-left:-10%;
+}
+.point-time {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  top: 17px;
+  left: 20%;
+  margin-left: -4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #fff;
+}
+.text-green {
+  color: #95c91e;
+}
+.point-red {
+  background-color: #f6393f;
+}
+.point-green {
+  background-color: #95c91e;
+}
+.point-grey{
+	background-color: #9f9f9f;
+}
+.qy_conent article {
+  position: relative;
+}
+.qy_conent article > h3 {
+  width: 15%;
+  height: 20px;
+  line-height: 20px;
+  text-align: right;
+  font-size: 1.4em;
+  color: #1d1d1d;
+  padding: 10px 0 20px;
+}
+.qy_conent article section {
+  padding: 0 0 4px;
+  position: relative;
+}
+.qy_conent article section:before {
+  content: "";
+  width: 5px;
+  top: 20px;
+  bottom: -20px;
+  left: 20%;
+  background: #e6e6e6;
+  position: absolute;
+}
+.qy_conent article section:last-child:before {
+  display: none;
+}
+.qy_conent article section time {
+  width: 15%;
+  display: block;
+  position: absolute;
+}
+.qy_conent article section time > span {
+  display: block;
+  text-align: right;
+}
+.qy_conent article section aside {
+  color: #3a3a38;
+  margin-left: 25%;
+  padding-bottom: 15px;
+}
+.qy_conent article section .brief {
+  color: #9f9f9f;
+  font-size:14px;
+  padding-top:6px;
+  margin-bottom: -35px;
+}
+.things{
+	padding-top:35px;
+	font-size: 16px;
+font-size:14px;font-family:'Microsoft YaHei UI';
+}
+
+</style>
+
+</head>
+<body style="overflow:inherit !important;">
+
+
+  <div class="weui_panel">
+      <div class="weui_panel_hd font_yhui font_sz16">追踪详情</div>
+      <div class="weui_panel_bd">
+          <div class="weui_media_box weui_media_text" style="margin-left:5%;">
+              <h5 class="weui_media_title"><span class="dis_inline font_yhui font_sz15 width80">船&nbsp;名</span>STEVENGERRAD</h5>
+              <h5 class="weui_media_title"><span class="dis_inline font_yhui font_sz15 width80">航&nbsp;次</span>6482E</h5>
+              <h5 class="weui_media_title"><span class="dis_inline font_yhui font_sz15 width80">提单号</span>QY11JS0258</h5>
+          </div>
+      </div>
+  </div>
+  <div class="qy_conent">
+    <article>
+      <section>
+        <span class="point-time point-grey"></span>
+        <aside>
+          <p class="things">单票运抵发送完毕</p>
+          <p class="brief"><span>2015-09-04 03:20:15</span></p>
+        </aside>
+      </section>
+        <section>
+        <span class="point-time point-grey"></span>
+        <aside>
+          <p class="things">货物已到达仓库</p>
+          <p class="brief"><span class="text-grey">2015-09-04 03:20:15</span></p>
+        </aside>
+      </section>
+        <section>
+        <span class="point-time point-grey"></span>
+        <aside>
+          <p class="things">Visitor at Maketing Live 2012</p>
+          <p class="brief"><span class="text-grey">2015-09-04 03:20:15</span></p>
+        </aside>
+      </section>
+        <section>
+        <span class="point-time point-grey"></span>
+        <aside>
+          <p class="things">Visitor at Maketing Live 2012</p>
+          <p class="brief"><span class="text-grey">2015-09-04 03:20:15</span></p>
+        </aside>
+      </section>
+        <section>
+        <span class="point-time point-grey"></span>
+        <aside>
+          <p class="things">Visitor at Maketing Live 2012</p>
+          <p class="brief"><span class="text-grey">2015-09-04 03:20:15</span></p>
+        </aside>
+      </section>
+         <section>
+        <span class="point-time point-grey"></span>
+        <aside>
+          <p class="things">Visitor at Maketing Live 2012</p>
+          <p class="brief"><span class="text-grey">2015-09-04 03:20:15</span></p>
+        </aside>
+      </section>
+         <section>
+        <span class="point-time point-grey"></span>
+        <aside>
+          <p class="things">Visitor at Maketing Live 2012</p>
+          <p class="brief"><span class="text-grey">2015-09-04 03:20:15</span></p>
+        </aside>
+      </section>
+      <section>
+      </section>
+    </article>
+  </div>
+
+      
+  <div class="content-block">
+    <div class="row">
+      <div class="col-50"><a href="#" class="button button-big button-fill button" style="height:2rem;line-height:2rem;">Back</a></div>
+      <div class="col-50"><a href="#" class="pb-standalone-captions button button-big button-fill button-success" style="height:2rem;line-height:2rem;" id="seePhoto">Photo</a></div>
+    </div>
+  </div>
+
+    <script>
+    var myPhotoBrowserCaptions = $.photoBrowser({
+        photos : [
+            {
+                url: 'http://img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+                caption: 'Caption 1 Text'
+            },
+            {
+                url: 'http://img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+                caption: 'Second Caption Text'
+            },
+            // 这个没有标题
+            {
+                url: 'http://img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+            },
+        ],
+        theme: 'dark',
+        type: 'standalone'
+    });
+    $(document).on('click','.pb-standalone-captions',function () {
+            myPhotoBrowserCaptions.open();
+            $("body").css('overflow','hidden !important');
+    });
+    $(document).on('click','.photo-browser-close-link',function () {
+            $("body").css('overflow','inherit !important');
+    });
+</script>
+</body>
+</html>
