@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<link rel="stylesheet" href="../style/weui.css">
+<link rel="stylesheet" href="../style/reset.css">
+<style>
+  body {
+  color: #9f9f9f;
+  background: #fff;
+  font-size: 1.16em;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  margin:0;padding: 0;
+
+}
+@font-face {font-family: 'iconfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:20px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+</style>
+<title>CargoDetails</title>
+</head>
+<body >
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script>   
+         $(document).ready(function(){      
+          $('#search_input').on('focus', function () {
+                var $weuiSearchBar = $('#search_bar');
+                $weuiSearchBar.addClass('weui_search_focusing');
+          }).on('blur',function () {
+                var $weuiSearchBar = $('#search_bar');
+                $weuiSearchBar.removeClass('weui_search_focusing');
+            }).on('input', function () {
+                var $searchShow = $("#search_show");
+                if ($(this).val()) {
+                    $searchShow.show();
+                } else {
+                    $searchShow.hide();
+                }
+            });      
+            $("#search_cancel").on('touchend',function(){
+                var $searchShow = $("#search_show");
+                $('#search_input').val('');
+                $searchShow.hide();
+            });
+            $("#search_clear").on('touchend',function(){         
+                  var $searchShow = $("#search_show");
+                  $('#search_input').val('');
+                  $searchShow.hide();
+            });  
+         });
+    </script>
+    
+       <div class="weui_panel_hd font_yhui font_sz16;" style="width:80%;">提单号查询</div>
+       <div class="weui_panel_bd">
+         
+                <div class="weui_search_bar" id="search_bar">         
+                <form class="weui_search_outer" action="" method="">
+                    <div class="weui_search_inner">
+                        <i class="weui_icon_search"></i>
+                        <input type="search" class="weui_search_input" id="search_input"  required/>
+                        <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+                    </div>
+                    <label for="search_input" class="weui_search_text" id="search_text">
+                        <i class="weui_icon_search"></i>
+                        <span>请输入提单号</span>
+                    </label>
+                </form>
+                    <a href="javascript:" class="weui_search_cancel" id="search_cancel" >取消</a>
+                </div>
+                <div class="weui_cells weui_cells_access search_show" id="search_show" style="display:none;">
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <a href="http:www.baidu.com" style="color:#9f9f9f">HF80523698</a>
+                        </div>
+                    </div>
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>实时搜索文本</p>
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+        
+        <!-- history bolNumber -->
+      <div class="weui_panel_bd">
+          <div class="weui_media_box weui_media_text" >
+              <h5 class="weui_media_title">
+                  <i class="iconfont">&#xe65c;</i><span class="dis_inline font_yhui font_sz15 width80 mg-left20">近期提单</span>
+              </h5>
+                <div class="weui_cells weui_cells_access" style="margin-top:0.5rem !important;">
+                    <a class="weui_cell" href="search.html" style="padding-left:0px !important;">
+                      <i class="iconfont">&#xe628;</i><div class="weui_cell_hd"></div>
+                       <div class="weui_cell_bd weui_cell_primary">
+                           <p class="pd-left20">HF15CH1259NC</p>
+                       </div>
+                       <span class="weui_cell_ft"></span>
+                    </a>
+                   <a class="weui_cell" href="search.html" style="padding-left:0px !important;">
+                      <i class="iconfont">&#xe628;</i><div class="weui_cell_hd"></div>
+                       <div class="weui_cell_bd weui_cell_primary">
+                           <p class="pd-left20">HF15CH1259NC</p>
+                       </div>
+                       <span class="weui_cell_ft"></span>
+                    </a>
+                     <a class="weui_cell" href="search.html" style="padding-left:0px !important;">
+                      <i class="iconfont">&#xe628;</i><div class="weui_cell_hd"></div>
+                       <div class="weui_cell_bd weui_cell_primary">
+                           <p class="pd-left20">HF15CH1259NC</p>
+                       </div>
+                       <span class="weui_cell_ft"></span>
+                    </a>
+                     <a class="weui_cell" href="search.html" style="padding-left:0px !important;">
+                      <i class="iconfont">&#xe628;</i><div class="weui_cell_hd"></div>
+                       <div class="weui_cell_bd weui_cell_primary">
+                           <p class="pd-left20">HF15CH1259NC</p>
+                       </div>
+                       <span class="weui_cell_ft"></span>
+                    </a>
+                </div>
+            </div>
+          </div>
+         
+        
+       
+   
+
+    
+</body>
+</html>
