@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息详情</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="https://cdn.bootcss.com/weui/0.4.2/style/weui.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../style/reset.css">
+</head>
+
+<body>
+    <div id="app">
+        <result></result>
+    </div>
+
+    <script>
+        var result = Vue.extend({
+            template: '<div class="weui_panel" id="Szpanel"><div class="weui_panel_hd  font_yhui font_sz15">{{pagetitle}}</div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">商品编号</p></div><div class="weui_cell_ft font_yhui font_sz13">{{hscode}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">商品名称</p></div><div class="weui_cell_ft font_yhui font_sz13">{{cargoname}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">法一单位</p></div><div class="weui_cell_ft font_yhui font_sz13">{{unitsname1}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">法二单位</p></div><div class="weui_cell_ft font_yhui font_sz13">{{unitsname2}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">普通税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{generaltariff}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">增值税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{vat}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">进口最惠国税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{importtariff}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">监管代码</p></div><div class="weui_cell_ft font_yhui font_sz13">{{sccode}}</div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2 weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">监管条件</h6><p class="weui_media_desc font_yhui font_sz13">{{scdescription}}</p></div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2  weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">申报要素</h6><p class="weui_media_desc font_yhui font_sz13">{{elements}}</p></div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2  weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">备注</h6><p class="weui_media_desc font_yhui font_sz13">{{notes}}</p></div></div></div><div class="query_button"><a href="javascript:;" class="weui_btn weui_btn_primary font_yhui" v-on:click="back">{{pagebutton}}</a></div><div id="loading"><div class="head"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div></div>',
+            data: function() {
+                return {
+                    pagetitle: "查询详情",
+                    pagebutton: "返回",
+                    hscode: "",
+                    cargoname: "",
+                    importtariff: "",
+                    generaltariff: "",
+                    vat: "",
+                    sccode: "",
+                    scdescription: "",
+                    unitsname1: "",
+                    unitsname2: "",
+                    notes: "",
+                    elements: ""
+                }
+            },
+            ready: function() {
+                var url = decodeURI(location.search);
+                if (url.indexOf("?") != -1) {　　
+                    var str = url.substr(1)　
+                    strs = str.split("&");　　
+                    var HSCode = strs[0];
+                    var HSCode = HSCode.substr(7);
+                    var HSName = strs[1];
+                    var CargoName = HSName.substr(7);
+                    $.ajax({
+                        type: "post",
+                        data: {
+                            "HSCode": HSCode,
+                            "CargoName": CargoName
+                        },
+                        url: "interface.php",
+                        beforeSend: function() {
+                            $("#loading").css("display", "block");
+                            $("#Szpanel").css("display", "none");
+                        },
+                        success: function(msg) {
+                            $("#loading").css("display", "none");
+                            $("#Szpanel").css("display", "block");
+                            var allNumber = msg.split("+")[0].trim() - 0;
+                            if (allNumber === 1) { // 结果是一个
+                                var msg = msg.split("+")[1].trim();
+                                var obj = eval('(' + msg + ')');
+                                alert(obj[0]["HSCode_Display"]);
+                                this.hscode = obj[0]["HSCode_Display"];
+                                this.cargoname = obj[0]["CargoName"];
+                                this.importtariff = obj[0]["Import_MFN_Tariff"]; //进口最惠国税率
+                                this.generaltariff = obj[0]["Import_General_Tariff"]; //普通税率
+                                this.vat = obj[0]["VAT"]; //增值税率
+                                this.sccode = obj[0]["SC_Code"]; //监管代码
+                                this.scdescription = obj[0]["SC_Description"]; //监管条件
+                                this.unitsname1 = obj[0]["LegalUnitsName1"]; //法一单位
+                                this.unitsname2 = obj[0]["LegalUnitsName2"]; //法二单位
+                                this.notes = obj[0]["Notes"]; //备注
+                                this.elements = obj[0]["Elements"]; //申报要素
+                            } else {
+                                alert("other" + allNumber); // 结果是多个
+                                // location.href = "http://www.baidu.com";
+                            }
+                        }.bind(this),
+                        error: function(data) {
+                            alert("false");
+                        }
+                    });
+
+                } else {
+                    alert("请求非法");
+                }
+            }
+        });
+
+        Vue.component('result', result);
+        var result = new Vue({
+            el: "#app"
+        })
+    </script>
+
+
+</body>
+
+</html>
