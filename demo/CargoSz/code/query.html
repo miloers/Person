@@ -15,10 +15,9 @@
     <div id="app">
         <result></result>
     </div>
-
     <script>
         var result = Vue.extend({
-            template: '<div class="weui_panel" id="Szpanel"><div class="weui_panel_hd  font_yhui font_sz15">{{pagetitle}}</div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">商品编号</p></div><div class="weui_cell_ft font_yhui font_sz13">{{hscode}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">商品名称</p></div><div class="weui_cell_ft font_yhui font_sz13">{{cargoname}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">法一单位</p></div><div class="weui_cell_ft font_yhui font_sz13">{{unitsname1}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">法二单位</p></div><div class="weui_cell_ft font_yhui font_sz13">{{unitsname2}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">普通税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{generaltariff}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">增值税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{vat}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">进口最惠国税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{importtariff}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">监管代码</p></div><div class="weui_cell_ft font_yhui font_sz13">{{sccode}}</div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2 weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">监管条件</h6><p class="weui_media_desc font_yhui font_sz13">{{scdescription}}</p></div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2  weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">申报要素</h6><p class="weui_media_desc font_yhui font_sz13">{{elements}}</p></div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2  weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">备注</h6><p class="weui_media_desc font_yhui font_sz13">{{notes}}</p></div></div></div><div class="query_button"><a href="javascript:;" class="weui_btn weui_btn_primary font_yhui" v-on:click="back">{{pagebutton}}</a></div><div id="loading"><div class="head"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div></div>',
+            template: '<div class="weui_panel" id="Szpanel"><div class="weui_panel_hd  font_yhui font_sz15">{{pagetitle}}</div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">商品编号</p></div><div class="weui_cell_ft font_yhui font_sz13">{{hscode}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">商品名称</p></div><div class="weui_cell_ft font_yhui font_sz13">{{cargoname}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">法一单位</p></div><div class="weui_cell_ft font_yhui font_sz13">{{unitsname1}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">法二单位</p></div><div class="weui_cell_ft font_yhui font_sz13">{{unitsname2}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">普通税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{generaltariff}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">增值税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{vat}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">进口最惠国税率</p></div><div class="weui_cell_ft font_yhui font_sz13">{{importtariff}}</div></div><div class="weui_cell"><div class="weui_cell_bd weui_cell_primary"><p class="font_yhui font_sz13">监管代码</p></div><div class="weui_cell_ft font_yhui font_sz13">{{sccode}}</div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2 weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">监管条件</h6><p class="weui_media_desc font_yhui font_sz13">{{scdescription}}</p></div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2  weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">申报要素</h6><p class="weui_media_desc font_yhui font_sz13">{{elements}}</p></div></div><div class="weui_cell"><div class="weui_media_box weui_media_box2  weui_media_text"><h6 class="weui_media_title font_yhui font_sz13">备注</h6><p class="weui_media_desc font_yhui font_sz13">{{notes}}</p></div></div><div class="query_button"><a href="javascript:;" class="weui_btn weui_btn_primary font_yhui" v-on:click="back">{{pagebutton}}</a></div></div><div id="loading"><div class="head"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div><div class="stageleft"></div><div class="stageright"></div></div>',
             data: function() {
                 return {
                     pagetitle: "查询详情",
@@ -57,13 +56,13 @@
                             $("#Szpanel").css("display", "none");
                         },
                         success: function(msg) {
-                            $("#loading").css("display", "none");
-                            $("#Szpanel").css("display", "block");
                             var allNumber = msg.split("+")[0].trim() - 0;
                             if (allNumber === 1) { // 结果是一个
+                                $("#loading").css("display", "none");
+                                $("#Szpanel").css("display", "block");
                                 var msg = msg.split("+")[1].trim();
                                 var obj = eval('(' + msg + ')');
-                                alert(obj[0]["HSCode_Display"]);
+                                console.log(obj[0]["HSCode_Display"]);
                                 this.hscode = obj[0]["HSCode_Display"];
                                 this.cargoname = obj[0]["CargoName"];
                                 this.importtariff = obj[0]["Import_MFN_Tariff"]; //进口最惠国税率
@@ -75,9 +74,12 @@
                                 this.unitsname2 = obj[0]["LegalUnitsName2"]; //法二单位
                                 this.notes = obj[0]["Notes"]; //备注
                                 this.elements = obj[0]["Elements"]; //申报要素
+                            } else if (allNumber === 0) {
+                                alert("return result is null!");
+                                location.href = "index.html";
                             } else {
                                 alert("other" + allNumber); // 结果是多个
-                                // location.href = "http://www.baidu.com";
+                                location.href = "more.html?hscode=" + HSCode + "&hsname=" + CargoName + "";
                             }
                         }.bind(this),
                         error: function(data) {
@@ -87,6 +89,11 @@
 
                 } else {
                     alert("请求非法");
+                }
+            },
+            methods: {
+                back: function() {
+                    history.go(-1);
                 }
             }
         });
