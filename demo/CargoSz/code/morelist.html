@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="https://cdn.bootcss.com/weui/0.4.2/style/weui.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../style/reset.css">
+    <style>
+        body {
+            font-family: 'microsoft yahei ui';
+        }
+        
+        .weui_panel_hd {
+            padding: 14px 25px 10px !important;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <morelist></morelist>
+    </div>
+
+    <script>
+        var morelist = Vue.extend({
+            template: '<div class="weui_panel weui_panel_access"><div class="weui_panel_hd">查询列表</div><div class="weui_panel_bd"><div v-for="item in items"><a href="query.html?hscode={{item.HSCode_Display}}&hsname={{item.CargoName}}" class="weui_panel_ft"><div class="weui_media_box weui_media_text"><h4 class="weui_media_title">商品编码 : {{ item.HSCode_Display }}</h4><p class="weui_media_desc">商品名称 : {{item.CargoName}}</p></div></a></div></div></div><div class="query_button"><a href="javascript:;" class="weui_btn weui_btn_primary font_yhui" v-on:click="back">{{pagebutton}}</a></div>',
+            data: function() {
+                return {
+                    items: "",
+                    pagebutton: "返回"
+                }
+            },
+            ready: function() {
+                var url = decodeURI(location.search);
+                if (url.indexOf("?") != -1) {　　
+                    var str = url.substr(1)　
+                    strs = str.split("&");　　
+                    var HSCode = strs[0];
+                    var HSCode = HSCode.substr(7);
+                    var HSName = strs[1];
+                    var CargoName = HSName.substr(7);
+                    $.ajax({
+                        type: "post",
+                        data: {
+                            "HSCode": HSCode,
+                            "CargoName": CargoName
+                        },
+                        url: "interface.php",
+                        beforeSend: function() {
+                            $("#loading").css("display", "block");
+                            $("#Szpanel").css("display", "none");
+                        },
+                        success: function(msg) {
+                            var allNumber = msg.split("+")[0].trim() - 0;
+                            if (allNumber) { // exist
+                                $("#loading").css("display", "none");
+                                $("#Szpanel").css("display", "block");
+                                var msg = msg.split("+")[1].trim();
+                                var obj = eval('(' + msg + ')');
+                                this.items = obj;
+                            } else {
+                                alert("return result is null!");
+                                location.href = "index.html";
+                            }
+                        }.bind(this),
+                        error: function(data) {
+                            alert("false");
+                        }
+                    });
+                }
+            },
+            methods: {
+                back: function() {
+                    location.href = "index.html";
+                }
+            }
+        });
+        Vue.component('morelist', morelist);
+        var morelist = new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+
+</html>
