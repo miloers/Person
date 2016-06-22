@@ -42,6 +42,7 @@
                     strs = str.split("&");　　
                     var HSCode = strs[0];
                     var HSCode = HSCode.substr(7);
+                    var HSCode = HSCode.replace('.', '');
                     var HSName = strs[1];
                     var CargoName = HSName.substr(7);
                     $.ajax({
@@ -75,20 +76,20 @@
                                 this.notes = obj[0]["Notes"]; //备注
                                 this.elements = obj[0]["Elements"]; //申报要素
                             } else if (allNumber === 0) {
-                                alert("return result is null!");
+                                alert("没有您查询的结果!");
                                 location.href = "index.html";
                             } else {
-                                alert("other" + allNumber); // 结果是多个
-                                location.href = "more.html?hscode=" + HSCode + "&hsname=" + CargoName + "";
+                                //console.log("other" + allNumber); // 结果是多个
+                                location.href = "morelist.html?hscode=" + HSCode + "&hsname=" + CargoName + "";
                             }
                         }.bind(this),
                         error: function(data) {
-                            alert("false");
+                            alert("return false ! Please check your device !");
                         }
                     });
-
                 } else {
                     alert("请求非法");
+                    location.href = "index.html";
                 }
             },
             methods: {
@@ -97,11 +98,10 @@
                 }
             }
         });
-
         Vue.component('result', result);
         var result = new Vue({
             el: "#app"
-        })
+        });
     </script>
 
 
