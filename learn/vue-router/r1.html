@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>hello vue-router</h1>
+        <p>
+            <a v-link="{path : '/foo'}">Go foo</a>
+            <a v-link="{path : '/bar'}">Go bar</a>
+        </p>
+        <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/vue/1.0.20/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.router/0.7.12/vue-router.min.js"></script>
+    <script>
+        var Foo = Vue.extend({
+            template: '<p> this is foo</p>'
+        })
+
+        var Bar = Vue.extend({
+            template: '<p>this is bar</p>'
+        })
+
+        var App = Vue.extend({})
+
+        var router = new VueRouter()
+
+        router.map({
+            '/foo': {
+                component: Foo
+            },
+            '/bar': {
+                component: Bar
+            }
+        })
+
+        router.start(App, '#app');
+    </script>
+</body>
+
+</html>
