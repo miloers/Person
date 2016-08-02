@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link href="https://cdn.bootcss.com/weui/0.4.2/style/weui.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function() {
+            var headHeight = $(window).height();
+            var backColor = '#' + toHex(toRandomColor()) + toHex(toRandomColor()) + toHex(toRandomColor());
+            $("header").css({
+                'height': headHeight / 2.3,
+                'opacity': toRandomOpacity(),
+                'width': '100%',
+                'background-color': backColor,
+                'position': 'relative'
+            });
+            $("#infor-body").css({
+                'color': backColor,
+                'opacity': 0.6
+            });
+            $(".user").on('click', function() {
+                window.location.reload();
+            })
+        })
+
+        function toRandomColor() {
+            var color = Math.round(Math.random() * 255);
+            return color;
+        }
+
+        function toRandomOpacity() {
+            var Opacity = Math.random();
+            Opacity = Opacity > 0.6 ? (Opacity - 0.2) : Opacity;
+            Opacity = Opacity < 0.3 ? (Opacity + 0.2) : Opacity;
+            return Opacity;
+        }
+
+        function toHex(val) {
+            var hex = '00';
+            if (val) {
+                hex = parseInt(val).toString(16);
+                if (hex.length == 1) {
+                    hex = '0' + hex;
+                }
+            }
+            return hex;
+        }
+    </script>
+    <style>
+        .user {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            color: black;
+            font-family: 'Microsoft JhengHei Light';
+            font-size: 20px;
+            background-color: white;
+            width: 75px;
+            border-radius: 58px;
+            border: 8px solid rgba(230, 225, 225, 0.4);
+            text-align: center;
+            line-height: 70px;
+        }
+        
+        .center {
+            font-size: 20px;
+            padding: 10px;
+        }
+        
+        .center-warp {
+            margin-left: 30px;
+            margin-top: 20px;
+            clear: left;
+        }
+        
+        .float-l {
+            float: left;
+        }
+        
+        .content {
+            margin-left: 55px;
+            font-size: 15px;
+            color: black;
+            font-family: 'helvetica neue', tahoma;
+            float: left;
+            padding: 10px;
+            line-height: 45px;
+        }
+        
+        .font_num {
+            font-family: Georgia, serif !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="user">
+            安楠
+        </div>
+    </header>
+
+    <div id="infor-body" class="center">
+        <div class="center-warp">
+            <div class="float-l">
+                <i class="iconfont">&#xe607;</i>
+            </div>
+            <div class="content ">
+                annan@mail.globelinkcn.com
+            </div>
+        </div>
+        <div class="center-warp">
+            <div class="float-l">
+                <i class="iconfont">&#xe616;</i>
+            </div>
+            <div class="content font_num ">
+                704363256
+            </div>
+        </div>
+
+        <div class="center-warp">
+            <div class="float-l">
+                <i class="iconfont">&#xe60b;</i>
+            </div>
+            <div class="content font_num ">
+                13602136644
+            </div>
+        </div>
+
+        <div class="center-warp">
+            <div class="float-l">
+                <i class="iconfont">&#xe620;</i>
+            </div>
+            <div class="content font_num ">
+                58327611
+            </div>
+        </div>
+
+        <div class="center-warp">
+            <div class="float-l">
+                <i class="iconfont">&#xe613;</i>
+            </div>
+            <div class="content font_num ">
+                58327611-279
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
