@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+
+<body>
+
+    <div class="content">
+
+        <input type="text" id="visible-input" value="KKKKK" />
+        <input type="button" id="visible-button" value="Copy">
+    </div>
+    <p class="footer">Complete post <a href="http://www.jstips.co/en/copy-to-clipboard/" target="_blank">here</a>. jstips.co</p>
+</body>
+<script>
+    // Copy to clipboard example
+    document.querySelector("#visible-button").onclick = function() {
+        // Select the content
+        document.querySelector("#visible-input").select();
+        // Copy to the clipboard
+        document.execCommand('copy');
+    };
+</script>
+
+</html>
