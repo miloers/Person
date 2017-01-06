@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initicale=no,maximum=1,minimum=1" />
+    <title>Document</title>
+    <style lang="">
+        table {
+            background-color: #40E0D0;
+            color: whitesmoke;
+            padding: 10px;
+            font-family: 'brandon-grotesque', sans-serif;
+            border-radius: 8px;
+        }
+        
+        table th {
+            padding: 10px;
+        }
+        
+        table tr td {
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        td:hover {
+            background-color: black;
+            opacity: 0.1;
+            border-radius: 50%;
+            transition: ease-in-out 0.2s;
+        }
+        
+        .clickcss {
+            background-color: black;
+            opacity: 0.5;
+            border-radius: 50%;
+            transition: ease-in-out 0.2s;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <script>
+        function isLeap(year) {
+            return year % 4 == 0 ? (year % 100 != 0 ? 1 : (year % 400 != 0 ? 1 : 0)) : 0;
+        }
+
+
+        var today = new Date();
+        var year = today.getFullYear(),
+            month = today.getMonth(),
+            datee = today.getDate(),
+            firstday = new Date(year, month, 1),
+            dayOfWeek = firstday.getDay(),
+            dayPerMonth = new Array(31, 28 + isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31),
+            str_nums = Math.ceil((dayOfWeek + dayPerMonth[month]) / 7);
+
+        document.write("<table cellspacing='0'><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>");
+        for (i = 0; i < str_nums; i += 1) {
+            document.write('<tr>');
+            for (k = 0; k < 7; k++) {
+                var idx = 7 * i + k;
+                var date = idx - dayOfWeek + 1;
+                (date <= 0 || date > dayPerMonth[month]) ? date = ' ': date = idx - dayOfWeek + 1;
+                date == datee ? document.write('<td class="today">' + date + '</td>') : document.write('<td>' + date + '</td>');
+            }
+            document.write('</tr>');
+        }
+        document.write('</table>');
+    </script>
+
+    <script>
+        $(function() {
+            $(document).on('click', 'td', function() {
+                if ($(this).hasClass("clickcss")) {
+                    alert("取消");
+                    $(this).removeClass("clickcss");
+                } else {
+                    alert($(this).text());
+                    $(this).addClass("clickcss");
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
