@@ -16,3 +16,6 @@ let query = ["工程名称", "任务单号"];
 let queryDataValue = todo.queryValue(processData, query, "name", "value");
 //返回特定数组
 let queryDataValueArr = todo.queryValueArr(processData, query, "name", "value");
+
+//生成特定对象
+let makeObj = todo.makeObj(processData, "id", "value");
