@@ -182,7 +182,6 @@ export class dynamicCreateData {
    * @param {*str} attrValue 值
    */
   makeObj(data, attr, attrValue) {
-    console.log(data.length);
     if (
       !this.isArray(data) ||
       !this.isString(attr) ||
@@ -194,6 +193,23 @@ export class dynamicCreateData {
     let obj = {};
     data.forEach(function(v, i) {
       obj[v[attr]] = v[attrValue];
+    });
+    return obj;
+  }
+
+  /**
+   * 数组转对象
+   * @param {*array} data 数组
+   * @param {*string} attr 键值
+   */
+  arrayMakeObj(data, attr) {
+    if (!this.isArray(data) || !this.isString(attr)) {
+      console.table([{ 原因: "传送的数据类型不对！", 来源: "makeObj" }]);
+      return false;
+    }
+    let obj = {};
+    data.forEach(function(v, i) {
+      obj[i + "0" + attr] = v;
     });
     return obj;
   }
