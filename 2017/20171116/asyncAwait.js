@@ -22,4 +22,4 @@ async function doItChain() {
 doItChain();
 
 // 避免回调地狱，在async函数中处理多个异步对象，
-// 通过await 使得整个async环境具有 类似的同步属性~。
+// 通过await 使得整个async环境具有 类似的同步属性~~。
